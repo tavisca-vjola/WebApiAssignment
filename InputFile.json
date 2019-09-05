@@ -1,0 +1,74 @@
+[
+  {
+    "Mid": 1990,
+    "Mname": "Prakhar",
+    "Mage": 23,
+    "MDOB": "11/11/1998",
+    "Msalary": "5000000",
+    "emp": { "Eid": 1234, "Ename": "hulk" }
+  },
+  {
+    "Mid": 1991,
+    "Mname": "prabhas",
+    "Mage": 27,
+    "MDOB": "12/11/1998",
+    "Msalary": "15000000",
+    "emp": { "Eid": 1235, "Ename": "captainmarvel" }
+  },
+  {
+    "Mid": 1992,
+    "Mname": "manoj",
+    "Mage": 25,
+    "MDOB": "12/12/1998",
+    "Msalary": "50020000",
+    "emp": { "Eid": 1236, "Ename": "avengers" }
+  },
+  {
+    "Mid": 1993,
+    "Mname": "kittu",
+    "Mage": 22,
+    "MDOB": "2/1/1998",
+    "Msalary": "50000020",
+    "emp": { "Eid": 1237, "Ename": "infinitywar" }
+  },
+  {
+    "Mid": 1994,
+    "Mname": "krp",
+    "Mage": 24,
+    "MDOB": "2/12/1998",
+    "Msalary": "50000002",
+    "emp": { "Eid": 1238, "Ename": "endgame" }
+  },
+  {
+    "Mid": 1995,
+    "Mname": "shardha",
+    "Mage": 22,
+    "MDOB": "19/01/1998",
+    "Msalary": "50400000",
+    "emp": { "Eid": 1239, "Ename": "jaiba;sad" }
+  },
+  {
+    "Mid": 1996,
+    "Mname": "killer",
+    "Mage": 21,
+    "MDOB": "29/01/1998",
+    "Msalary": "500050600",
+    "emp": { "Eid": 1240, "Ename": "namasrtay" }
+  },
+  {
+    "Mid": 1997,
+    "Mname": "iamoptimus",
+    "Mage": 29,
+    "MDOB": "31/01/1998",
+    "Msalary": "50066440000",
+    "emp": { "Eid": 1241, "Ename": "helsla" }
+  },
+  {
+    "Mid": 1990,
+    "Mname": "sai",
+    "Mage": 23,
+    "MDOB": "12/01/1998",
+    "Msalary": "5000000",
+    "emp": { "Eid": 1234, "Ename": "crazier" }
+  }
+]
