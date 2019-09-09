@@ -6,22 +6,31 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Text.RegularExpressions;
+using System.Web.Mvc;
 
 namespace api_assignment.Controllers
 {
     public class ManagersController : ApiController
     {
-      
+
+
 
         public class Manager
         {
-   
+            public class Employeedata
+            {
+                public List<Employee> Emp { set; get; }
+            }
+            public Employeedata Edata;
+
             public int Mid;
             public string Mname;
             public int Mage;
-            public  string MDOB;
-            public string  Msalary;
-            public Employee emp;
+            public string MDOB;
+            public string Msalary;
+
+
 
         }
         public class Employee
@@ -30,7 +39,7 @@ namespace api_assignment.Controllers
             public string Ename;
 
         }
-     
+
         public object Get()
         {
             var filepath = @"C:\Users\vjola\source\repos\api_assignment\InputFile.json";
@@ -40,31 +49,26 @@ namespace api_assignment.Controllers
         }
 
         // GET api/values/5
-        public List<Manager> Get(int id ,string name)
+        public List<Employee> Get(int id,string name)
         {
-            List<Manager> employee = new List<Manager>();
-
-            if (name == "Employee")
+            var filepath = @"C:\Users\vjola\source\repos\api_assignment\InputFile.json";
+            List<Employee> employ = new List<Employee>();
+            var jsonData = System.IO.File.ReadAllText(filepath);
+            var employeeList = JsonConvert.DeserializeObject<List<Manager>>(jsonData) ?? new List<Manager>();
+            for (int i = 0; i < employeeList.Count; i++)
             {
-
-                var filepath = @"C:\Users\vjola\source\repos\api_assignment\InputFile.json";
-             
-
-                var jsonData = System.IO.File.ReadAllText(filepath);
-                // De-serialize to object or create new list
-                var employeeList = JsonConvert.DeserializeObject<List<Manager>>(jsonData)
-                                      ?? new List<Manager>();
-                for (int i = 0; i < employeeList.Count; i++)
+                for (int j = 0; j < employeeList[i].Edata.Emp.Count; j++)
                 {
-                    if (employeeList[i].emp.Eid < id)
+                 
+                    if (employeeList[i].Edata.Emp[j].Eid < id)
                     {
-                        employee.Add(employeeList[i]);
+                        employ.Add(employeeList[i].Edata.Emp[j]);
                     }
                 }
             }
-                return employee;
-            
-          
+            return employ;
+
+
         }
         public Manager Get(int id)
         {
@@ -75,36 +79,50 @@ namespace api_assignment.Controllers
             // De-serialize to object or create new list
             var employeeList = JsonConvert.DeserializeObject<List<Manager>>(jsonData)
                                   ?? new List<Manager>();
-            for(int i=0;i<employeeList.Count;i++)
+            for (int i = 0; i < employeeList.Count; i++)
             {
                 if (employeeList[i].Mid == id)
                     return employeeList[i];
 
             }
-            
+
             return m;
-            
-          
+
+
         }
 
         // POST api/values
-        public void Post()
+      public void Post()
         {
             var filepath = @"C:\Users\vjola\source\repos\api_assignment\InputFile.json";
-            int count = 1234,count1=1990;
-           
+            int count = 2234, count1 = 2990;
+
             var jsonData = System.IO.File.ReadAllText(filepath);
             // De-serialize to object or create new list
             var employeeList = JsonConvert.DeserializeObject<List<Manager>>(jsonData)
                                   ?? new List<Manager>();
-           
+
             // Add any new employees
             employeeList.Add(new Manager()
             {
-                emp = new Employee
+                Edata =
                 {
-                    Eid = count++,
-                    Ename = "crazier"
+                   Emp=
+                    new List<Employee>(){
+                    new Employee()
+                    {
+                        Eid=1237,
+                        Ename="Jai Ballya"
+                    },
+                    new Employee()
+                    {
+                        Eid=1239,
+                        Ename="khsaakf"
+                    }
+
+                    }
+                    
+
                 },
                 Mid = count1++,
                 Mname = "sai",
@@ -114,11 +132,24 @@ namespace api_assignment.Controllers
             });
             employeeList.Add(new Manager()
             {
-                emp = new Employee
-                {
-                    Eid = count++,
-                    Ename = "sulamon"
-                },
+                Edata = {
+
+                    Emp= new List<Employee>(){
+                    new Employee()
+                    {
+                        Eid=1240,
+                        Ename="jai ho"
+                    },
+                    new Employee()
+                    {
+                        Eid=1242,
+                        Ename="kitna"
+                    }
+                    }
+                    }
+
+
+                ,
                 Mid = count1++,
                 Mname = "sai",
                 Mage = 23,
@@ -147,4 +178,3 @@ namespace api_assignment.Controllers
         //}
     }
 }
-
